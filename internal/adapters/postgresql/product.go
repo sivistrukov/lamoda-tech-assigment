@@ -3,6 +3,7 @@ package postgresql
 import (
 	"database/sql"
 	"lamoda-tech-assigment/internal/domain"
+	"strings"
 
 	sq "github.com/Masterminds/squirrel"
 )
@@ -32,6 +33,9 @@ func (r *ProductRepository) Add(product *domain.Product) error {
 
 	_, err = r.tx.Exec(stmt, args...)
 	if err != nil {
+		if strings.Contains(err.Error(), "unique constraint") {
+			return EntityAlreadyExist
+		}
 		return err
 	}
 

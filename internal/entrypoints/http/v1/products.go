@@ -2,6 +2,8 @@ package v1
 
 import (
 	"errors"
+	"fmt"
+	"lamoda-tech-assigment/internal/adapters/postgresql"
 	"lamoda-tech-assigment/internal/entrypoints/http/shared"
 	"net/http"
 )
@@ -32,11 +34,22 @@ func (h *Handler) AddNewProduct(w http.ResponseWriter, r *http.Request) {
 
 	_, err = h.uc.AddProduct(payload.Code, payload.Name, payload.Size)
 	if err != nil {
+		if errors.Is(err, postgresql.EntityAlreadyExist) {
+			shared.WriteJSON(
+				http.StatusBadRequest,
+				&shared.ErrorResponse{
+					StatusCode: http.StatusBadRequest,
+					Details:    fmt.Sprintf("product with code %v exist", payload.Code),
+				}, w,
+			)
+			return
+		}
+
 		shared.WriteJSON(
 			http.StatusInternalServerError,
 			&shared.ErrorResponse{
 				StatusCode: http.StatusInternalServerError,
-				Details:    "Internal server error",
+				Details:    "internal server error",
 			}, w,
 		)
 		return
