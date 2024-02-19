@@ -1,9 +1,10 @@
 package v1
 
 import (
-	"github.com/gorilla/mux"
 	"lamoda-tech-assigment/internal/services/usecases"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 type Handler struct {

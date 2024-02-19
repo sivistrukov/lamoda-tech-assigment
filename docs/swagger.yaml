@@ -1,0 +1,288 @@
+basePath: /api
+definitions:
+  domain.Product:
+    properties:
+      code:
+        type: string
+      name:
+        type: string
+      quantity:
+        type: integer
+      size:
+        type: string
+    type: object
+  shared.ErrorResponse:
+    properties:
+      details:
+        example: error message
+        type: string
+      statusCode:
+        example: 400
+        type: integer
+    type: object
+  shared.ResultResponse:
+    properties:
+      ok:
+        type: boolean
+    type: object
+  v1.AddProduct:
+    properties:
+      code:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  v1.CreateWarehouse:
+    properties:
+      name:
+        type: string
+    type: object
+  v1.Product:
+    properties:
+      code:
+        type: string
+      name:
+        type: string
+      size:
+        type: string
+    type: object
+  v1.ReservationRequest:
+    properties:
+      code:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  v1.Warehouse:
+    properties:
+      id:
+        type: integer
+      isAvailable:
+        type: boolean
+      name:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  title: Lamoda Tech assigment
+  version: "1.0"
+paths:
+  /v1/products/:
+    post:
+      consumes:
+      - application/json
+      description: add new product in database
+      parameters:
+      - description: New product
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/v1.Product'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/shared.ResultResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+      summary: Add new product
+      tags:
+      - products
+  /v1/warehouses/:
+    post:
+      consumes:
+      - application/json
+      description: add new warehouse in database
+      parameters:
+      - description: New warehouse
+        in: body
+        name: warehouse
+        required: true
+        schema:
+          $ref: '#/definitions/v1.CreateWarehouse'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/v1.Warehouse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+      summary: Add new warehouse
+      tags:
+      - warehouses
+  /v1/warehouses/{id}/cancel-reservation/:
+    post:
+      consumes:
+      - application/json
+      description: cancel reservation reserve products in warehouse
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Products
+        in: body
+        name: products
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/v1.ReservationRequest'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.ResultResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+      summary: Cancel reservation products
+      tags:
+      - warehouses
+  /v1/warehouses/{id}/products/:
+    get:
+      description: get products stored in warehouse
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Product'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+      summary: Get products
+      tags:
+      - warehouses
+    post:
+      consumes:
+      - application/json
+      description: add products to warehouse
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Products
+        in: body
+        name: products
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/v1.AddProduct'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/v1.Warehouse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+      summary: Add products
+      tags:
+      - warehouses
+  /v1/warehouses/{id}/products/{code}/quantity:
+    get:
+      description: get product's quantity stored in warehouse
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Product code
+        in: path
+        name: code
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Product'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+      summary: Get product's quantity
+      tags:
+      - warehouses
+  /v1/warehouses/{id}/reserve/:
+    post:
+      consumes:
+      - application/json
+      description: reserve products in warehouse
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Products
+        in: body
+        name: products
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/v1.ReservationRequest'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shared.ResultResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/shared.ErrorResponse'
+      summary: Reserve products
+      tags:
+      - warehouses
+swagger: "2.0"

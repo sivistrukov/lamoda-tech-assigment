@@ -2,12 +2,14 @@ package http
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"lamoda-tech-assigment/internal/config"
 	v1 "lamoda-tech-assigment/internal/entrypoints/http/v1"
 	"lamoda-tech-assigment/internal/services/usecases"
 	"net/http"
 	"time"
+
+	"github.com/gorilla/mux"
+	httpSwag "github.com/swaggo/http-swagger/v2"
 )
 
 type Server struct {
@@ -37,6 +39,13 @@ func (s *Server) ConfigureRouter() {
 
 	handlerV1 := v1.NewHandler(s.uc)
 	handlerV1.InitializeRoutes(api.PathPrefix("/v1").Subrouter())
+
+	router.PathPrefix("/swagger").Handler(httpSwag.Handler(
+		httpSwag.URL("http://localhost:8080/swagger/doc.json"),
+		httpSwag.DeepLinking(true),
+		httpSwag.DocExpansion("list"),
+		httpSwag.DomID("swagger-ui"),
+	))
 
 	s.srv.Handler = router
 }

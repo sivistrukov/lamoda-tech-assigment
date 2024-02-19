@@ -2,8 +2,9 @@ package postgresql
 
 import (
 	"database/sql"
-	sq "github.com/Masterminds/squirrel"
 	"lamoda-tech-assigment/internal/domain"
+
+	sq "github.com/Masterminds/squirrel"
 )
 
 type ProductRepository struct {

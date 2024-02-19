@@ -3,14 +3,26 @@ package v1
 import (
 	"errors"
 	"fmt"
-	"github.com/gorilla/mux"
 	"lamoda-tech-assigment/internal/adapters/postgresql"
 	"lamoda-tech-assigment/internal/domain"
 	"lamoda-tech-assigment/internal/entrypoints/http/shared"
 	"net/http"
 	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
+// AddWarehouse godoc
+//
+//	@Summary		Add new warehouse
+//	@Description	add new warehouse in database
+//	@Tags			warehouses
+//	@Accept			json
+//	@Produce		json
+//	@Param			warehouse	body		CreateWarehouse	true	"New warehouse"
+//	@Success		201			{object}	Warehouse
+//	@Failure		400			{object}	shared.ErrorResponse
+//	@Router			/v1/warehouses/ [post]
 func (h *Handler) AddWarehouse(w http.ResponseWriter, r *http.Request) {
 	var payload CreateWarehouse
 	err := shared.DecodeJSON(r, &payload)
@@ -46,6 +58,19 @@ func (h *Handler) AddWarehouse(w http.ResponseWriter, r *http.Request) {
 	shared.WriteJSON(http.StatusCreated, &response, w)
 }
 
+// AddProductsToWarehouse godoc
+//
+//	@Summary		Add products
+//	@Description	add products to warehouse
+//	@Tags			warehouses
+//	@Accept			json
+//	@Produce		json
+//	@Param			id			path		int				true	"Warehouse ID"
+//	@Param			products	body		[]AddProduct	true	"Products"
+//	@Success		201			{object}	Warehouse
+//	@Failure		400			{object}	shared.ErrorResponse
+//	@Failure		404			{object}	shared.ErrorResponse
+//	@Router			/v1/warehouses/{id}/products/ [post]
 func (h *Handler) AddProductsToWarehouse(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	warehouseID, _ := strconv.ParseUint(params["id"], 10, 64)
@@ -114,6 +139,19 @@ func (h *Handler) AddProductsToWarehouse(w http.ResponseWriter, r *http.Request)
 	shared.WriteJSON(http.StatusOK, &result, w)
 }
 
+// ReserveProductFromWarehouse godoc
+//
+//	@Summary		Reserve products
+//	@Description	reserve products in warehouse
+//	@Tags			warehouses
+//	@Accept			json
+//	@Produce		json
+//	@Param			id			path		int						true	"Warehouse ID"
+//	@Param			products	body		[]ReservationRequest	true	"Products"
+//	@Success		200			{object}	shared.ResultResponse
+//	@Failure		400			{object}	shared.ErrorResponse
+//	@Failure		404			{object}	shared.ErrorResponse
+//	@Router			/v1/warehouses/{id}/reserve/ [post]
 func (h *Handler) ReserveProductFromWarehouse(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	warehouseID, _ := strconv.ParseUint(params["id"], 10, 64)
@@ -170,9 +208,22 @@ func (h *Handler) ReserveProductFromWarehouse(w http.ResponseWriter, r *http.Req
 		return
 	}
 
-	shared.WriteJSON(http.StatusOK, nil, w)
+	shared.WriteJSON(http.StatusOK, &shared.ResultResponse{Ok: true}, w)
 }
 
+// CancelReservationFromWarehouse godoc
+//
+//	@Summary		Cancel reservation products
+//	@Description	cancel reservation reserve products in warehouse
+//	@Tags			warehouses
+//	@Accept			json
+//	@Produce		json
+//	@Param			id			path		int						true	"Warehouse ID"
+//	@Param			products	body		[]ReservationRequest	true	"Products"
+//	@Success		200			{object}	shared.ResultResponse
+//	@Failure		400			{object}	shared.ErrorResponse
+//	@Failure		404			{object}	shared.ErrorResponse
+//	@Router			/v1/warehouses/{id}/cancel-reservation/ [post]
 func (h *Handler) CancelReservationFromWarehouse(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	warehouseID, _ := strconv.ParseUint(params["id"], 10, 64)
@@ -229,9 +280,19 @@ func (h *Handler) CancelReservationFromWarehouse(w http.ResponseWriter, r *http.
 		return
 	}
 
-	shared.WriteJSON(http.StatusOK, nil, w)
+	shared.WriteJSON(http.StatusOK, &shared.ResultResponse{Ok: true}, w)
 }
 
+// GetWarehouseProducts godoc
+//
+//	@Summary		Get products
+//	@Description	get products stored in warehouse
+//	@Tags			warehouses
+//	@Produce		json
+//	@Param			id	path		int	true	"Warehouse ID"
+//	@Success		200	{array}		domain.Product
+//	@Failure		404	{object}	shared.ErrorResponse
+//	@Router			/v1/warehouses/{id}/products/ [get]
 func (h *Handler) GetWarehouseProducts(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	warehouseID, _ := strconv.ParseUint(params["id"], 10, 64)
@@ -263,6 +324,17 @@ func (h *Handler) GetWarehouseProducts(w http.ResponseWriter, r *http.Request) {
 	shared.WriteJSON(http.StatusOK, &products, w)
 }
 
+// GetProductQuantity godoc
+//
+//	@Summary		Get product's quantity
+//	@Description	get product's quantity stored in warehouse
+//	@Tags			warehouses
+//	@Produce		json
+//	@Param			id		path		int	true	"Warehouse ID"
+//	@Param			code	path		int	true	"Product code"
+//	@Success		200		{array}		domain.Product
+//	@Failure		404		{object}	shared.ErrorResponse
+//	@Router			/v1/warehouses/{id}/products/{code}/quantity [get]
 func (h *Handler) GetProductQuantity(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	warehouseID, _ := strconv.ParseUint(params["id"], 10, 64)

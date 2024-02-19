@@ -6,6 +6,17 @@ import (
 	"net/http"
 )
 
+// AddNewProduct godoc
+//
+//	@Summary		Add new product
+//	@Description	add new product in database
+//	@Tags			products
+//	@Accept			json
+//	@Produce		json
+//	@Param			product	body		Product	true "New product"
+//	@Success		201		{object}	shared.ResultResponse
+//	@Failure		400		{object}	shared.ErrorResponse
+//	@Router			/v1/products/ [post]
 func (h *Handler) AddNewProduct(w http.ResponseWriter, r *http.Request) {
 	var payload Product
 	err := shared.DecodeJSON(r, &payload)
@@ -31,5 +42,5 @@ func (h *Handler) AddNewProduct(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	shared.WriteJSON(http.StatusCreated, nil, w)
+	shared.WriteJSON(http.StatusCreated, &shared.ResultResponse{Ok: true}, w)
 }

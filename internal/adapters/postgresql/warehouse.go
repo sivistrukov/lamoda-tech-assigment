@@ -2,10 +2,11 @@ package postgresql
 
 import (
 	"database/sql"
-	sq "github.com/Masterminds/squirrel"
 	"lamoda-tech-assigment/internal/domain"
 	"log"
 	"strings"
+
+	sq "github.com/Masterminds/squirrel"
 )
 
 type ProductStatus string
