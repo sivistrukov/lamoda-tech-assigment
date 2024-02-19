@@ -24,14 +24,32 @@ func newPostgresqlConnect(cfg config.SQL) (*sql.DB, error) {
 	builder.WriteString("sslmode=disable ")
 
 	params := builder.String()
+	var db *sql.DB
+	var err error
 
-	db, err := sql.Open("postgres", params)
-	if err != nil {
-		return nil, err
+	for counter := 0; ; counter++ {
+		db, err = sql.Open("postgres", params)
+		if err != nil {
+			if counter < 3 {
+				time.Sleep(3 * time.Second)
+				continue
+			}
+			return nil, err
+		}
+
+		break
 	}
 
-	if err = db.Ping(); err != nil {
-		return nil, err
+	for counter := 0; ; counter++ {
+		if err = db.Ping(); err != nil {
+			if counter < 3 {
+				time.Sleep(3 * time.Second)
+				continue
+			}
+			return nil, err
+		}
+
+		break
 	}
 
 	db.SetMaxOpenConns(cfg.MaxConn)
