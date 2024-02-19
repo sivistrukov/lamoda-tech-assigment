@@ -8,6 +8,11 @@ cd lamoda-tech-assigment
 make
 ```
 
+Запуск тестов:
+```shell
+make test
+```
+
 ## Методы с примерами запросов и ответов
 
 *(swagger документация для API расположена на http://localhost:8080/swagger/index.html)*
