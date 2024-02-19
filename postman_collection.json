@@ -1,0 +1,1243 @@
+{
+	"info": {
+		"_postman_id": "9ab0a8bc-e7fc-42c0-beaa-d5aeb4bddd12",
+		"name": "Lamoda Tech assigment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20732231"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "Add new product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"code\": \"F\",\n  \"name\": \"F Product\",\n  \"size\": \"?\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/products/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"products",
+										""
+									]
+								},
+								"description": "add new product in database"
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"size\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/products/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"products",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"ok\": \"<boolean>\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"size\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/products/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"products",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "warehouses",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "cancel-reservation",
+									"item": [
+										{
+											"name": "Cancel reservation products",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/warehouses/:id/cancel-reservation/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"warehouses",
+														":id",
+														"cancel-reservation",
+														""
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) Warehouse ID"
+														}
+													]
+												},
+												"description": "cancel reservation reserve products in warehouse"
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/cancel-reservation/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"cancel-reservation",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"ok\": \"<boolean>\"\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/cancel-reservation/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"cancel-reservation",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/cancel-reservation/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"cancel-reservation",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "products",
+									"item": [
+										{
+											"name": "{code}",
+											"item": [
+												{
+													"name": "quantity",
+													"item": [
+														{
+															"name": "Get product's quantity",
+															"request": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/warehouses/:id/products/:code/quantity",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"warehouses",
+																		":id",
+																		"products",
+																		":code",
+																		"quantity"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "<integer>",
+																			"description": "(Required) Warehouse ID"
+																		},
+																		{
+																			"key": "code",
+																			"value": "<integer>",
+																			"description": "(Required) Product code"
+																		}
+																	]
+																},
+																"description": "get product's quantity stored in warehouse"
+															},
+															"response": [
+																{
+																	"name": "OK",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/v1/warehouses/:id/products/:code/quantity",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"v1",
+																				"warehouses",
+																				":id",
+																				"products",
+																				":code",
+																				"quantity"
+																			],
+																			"variable": [
+																				{
+																					"key": "id"
+																				},
+																				{
+																					"key": "code"
+																				}
+																			]
+																		}
+																	},
+																	"status": "OK",
+																	"code": 200,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "[\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  }\n]"
+																},
+																{
+																	"name": "Not Found",
+																	"originalRequest": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/v1/warehouses/:id/products/:code/quantity",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"v1",
+																				"warehouses",
+																				":id",
+																				"products",
+																				":code",
+																				"quantity"
+																			],
+																			"variable": [
+																				{
+																					"key": "id"
+																				},
+																				{
+																					"key": "code"
+																				}
+																			]
+																		}
+																	},
+																	"status": "Not Found",
+																	"code": 404,
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "Get products",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/warehouses/:id/products/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"warehouses",
+														":id",
+														"products",
+														""
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) Warehouse ID"
+														}
+													]
+												},
+												"description": "get products stored in warehouse"
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/products/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"products",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "[\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  }\n]"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/products/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"products",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Add products",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/warehouses/:id/products/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"warehouses",
+														":id",
+														"products",
+														""
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) Warehouse ID"
+														}
+													]
+												},
+												"description": "add products to warehouse"
+											},
+											"response": [
+												{
+													"name": "Created",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/products/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"products",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<integer>\",\n  \"isAvailable\": \"<boolean>\",\n  \"name\": \"<string>\"\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/products/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"products",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/products/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"products",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "reserve",
+									"item": [
+										{
+											"name": "Reserve products",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/warehouses/:id/reserve/",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"warehouses",
+														":id",
+														"reserve",
+														""
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<integer>",
+															"description": "(Required) Warehouse ID"
+														}
+													]
+												},
+												"description": "reserve products in warehouse"
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/reserve/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"reserve",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"ok\": \"<boolean>\"\n}"
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/reserve/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"reserve",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+												},
+												{
+													"name": "Not Found",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/warehouses/:id/reserve/",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"warehouses",
+																":id",
+																"reserve",
+																""
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Add new warehouse",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/v1/warehouses/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"v1",
+										"warehouses",
+										""
+									]
+								},
+								"description": "add new warehouse in database"
+							},
+							"response": [
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/warehouses/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"warehouses",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"isAvailable\": \"<boolean>\",\n  \"name\": \"<string>\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/v1/warehouses/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"warehouses",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api"
+		}
+	]
+}
