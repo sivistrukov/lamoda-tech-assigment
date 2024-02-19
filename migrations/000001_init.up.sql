@@ -7,9 +7,9 @@ CREATE TABLE warehouses
 
 CREATE TABLE products
 (
-    Code VARCHAR(30) PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
-    Size VARCHAR(255) DEFAULT ''
+    code VARCHAR(30) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    size VARCHAR(255) DEFAULT ''
 );
 
 CREATE TABLE warehouse_products
