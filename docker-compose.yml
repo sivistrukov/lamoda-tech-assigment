@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - DB_HOST=localhost
+      - DB_HOST=database
       - DB_NAME=assigment
       - DB_PASSWORD=postgres123
       - DB_PORT=5432
@@ -25,3 +25,5 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres123
       - POSTGRES_DB=assigment
+    ports:
+      - "5060:5432"

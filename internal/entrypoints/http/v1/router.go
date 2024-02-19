@@ -1,7 +1,6 @@
 package v1
 
 import (
-	"encoding/json"
 	"github.com/gorilla/mux"
 	"lamoda-tech-assigment/internal/services/usecases"
 	"net/http"
@@ -16,16 +15,8 @@ func NewHandler(uc usecases.IUseCases) Handler {
 	return Handler{uc: uc}
 }
 
-// TODO: remove
-func (h *Handler) Live(w http.ResponseWriter, r *http.Request) {
-	// an example API handler
-	json.NewEncoder(w).Encode(map[string]bool{"ok": true})
-}
-
 // InitializeRoutes is initializing handler routes.
 func (h *Handler) InitializeRoutes(router *mux.Router) {
-	router.HandleFunc("/live/", h.Live)
-
 	products := router.PathPrefix("/products").Subrouter()
 	products.HandleFunc("/", h.AddNewProduct).Methods(http.MethodPost)
 
