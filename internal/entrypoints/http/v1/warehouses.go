@@ -65,9 +65,9 @@ func (h *Handler) AddWarehouse(w http.ResponseWriter, r *http.Request) {
 //	@Tags			warehouses
 //	@Accept			json
 //	@Produce		json
-//	@Param			id			path		int				true	"Warehouse ID"
-//	@Param			products	body		[]AddProduct	true	"Products"
-//	@Success		201			{object}	Warehouse
+//	@Param			id			path		int					true	"Warehouse ID"
+//	@Param			products	body		[]ProductQuantity	true	"Products"
+//	@Success		201			{array}		ProductQuantity
 //	@Failure		400			{object}	shared.ErrorResponse
 //	@Failure		404			{object}	shared.ErrorResponse
 //	@Router			/v1/warehouses/{id}/products/ [post]
@@ -75,7 +75,7 @@ func (h *Handler) AddProductsToWarehouse(w http.ResponseWriter, r *http.Request)
 	params := mux.Vars(r)
 	warehouseID, _ := strconv.ParseUint(params["id"], 10, 64)
 
-	var payload []AddProduct
+	var payload []ProductQuantity
 	err := shared.DecodeJSON(r, &payload)
 	if err != nil {
 		var errResp *shared.ErrorResponse
@@ -332,7 +332,7 @@ func (h *Handler) GetWarehouseProducts(w http.ResponseWriter, r *http.Request) {
 //	@Produce		json
 //	@Param			id		path		int	true	"Warehouse ID"
 //	@Param			code	path		int	true	"Product code"
-//	@Success		200		{array}		domain.Product
+//	@Success		200		{array}		ProductQuantity
 //	@Failure		404		{object}	shared.ErrorResponse
 //	@Router			/v1/warehouses/{id}/products/{code}/quantity [get]
 func (h *Handler) GetProductQuantity(w http.ResponseWriter, r *http.Request) {
@@ -374,6 +374,6 @@ func (h *Handler) GetProductQuantity(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response := map[string]uint{"quantity": quantity}
+	response := map[string]any{"code": code, "quantity": quantity}
 	shared.WriteJSON(http.StatusOK, &response, w)
 }

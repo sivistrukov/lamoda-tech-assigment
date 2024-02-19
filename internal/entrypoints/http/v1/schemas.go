@@ -16,7 +16,7 @@ type Product struct {
 	Size string `json:"size"`
 }
 
-type AddProduct struct {
+type ProductQuantity struct {
 	Code     string `json:"code"`
 	Quantity uint   `json:"quantity"`
 }

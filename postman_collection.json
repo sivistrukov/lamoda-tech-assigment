@@ -28,7 +28,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"code\": \"F\",\n  \"name\": \"F Product\",\n  \"size\": \"?\"\n}",
+									"raw": "{\n  \"code\": \"D\",\n  \"name\": \"D Product\",\n  \"size\": \"size\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -66,7 +66,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"size\": \"<string>\"\n}",
+											"raw": "{\n  \"code\": \"D001\",\n  \"name\": \"Product D\",\n  \"size\": \"size\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -96,7 +96,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"ok\": \"<boolean>\"\n}"
+									"body": "{\n  \"ok\": true\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -114,7 +114,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"code\": \"<string>\",\n  \"name\": \"<string>\",\n  \"size\": \"<string>\"\n}",
+											"raw": "{\n  \"code\": 1\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -144,7 +144,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+									"body": "{\n  \"details\": \"request body contains an invalid value\",\n  \"statusCode\": \"400\"\n}"
 								}
 							]
 						}
@@ -222,7 +222,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"raw": "[\n  {\n    \"code\": \"A001\",\n    \"quantity\": 50\n  },\n  {\n    \"code\": \"C001\",\n    \"quantity\": 20\n  }\n]",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -244,7 +244,8 @@
 															],
 															"variable": [
 																{
-																	"key": "id"
+																	"key": "id",
+																	"value": "1"
 																}
 															]
 														}
@@ -259,7 +260,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"ok\": \"<boolean>\"\n}"
+													"body": "{\n  \"ok\": true\n}"
 												},
 												{
 													"name": "Bad Request",
@@ -448,10 +449,12 @@
 																			],
 																			"variable": [
 																				{
-																					"key": "id"
+																					"key": "id",
+																					"value": "1"
 																				},
 																				{
-																					"key": "code"
+																					"key": "code",
+																					"value": "A001"
 																				}
 																			]
 																		}
@@ -466,7 +469,7 @@
 																		}
 																	],
 																	"cookie": [],
-																	"body": "[\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  }\n]"
+																	"body": "{\n    \"code\": \"A001\",\n    \"quantity\": 130\n}"
 																},
 																{
 																	"name": "Not Found",
@@ -576,7 +579,8 @@
 															],
 															"variable": [
 																{
-																	"key": "id"
+																	"key": "id",
+																	"value": "1"
 																}
 															]
 														}
@@ -591,7 +595,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "[\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"quantity\": \"<integer>\",\n    \"size\": \"<string>\"\n  }\n]"
+													"body": "[\n    {\n        \"code\": \"B001\",\n        \"name\": \"Product B\",\n        \"size\": \"?\",\n        \"quantity\": 50\n    },\n    {\n        \"code\": \"A001\",\n        \"name\": \"Product A\",\n        \"size\": \"?\",\n        \"quantity\": 100\n    }\n]"
 												},
 												{
 													"name": "Not Found",
@@ -617,7 +621,8 @@
 															],
 															"variable": [
 																{
-																	"key": "id"
+																	"key": "id",
+																	"value": "10"
 																}
 															]
 														}
@@ -632,7 +637,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+													"body": "{\n  \"details\": \"Warehouse with id 10 not found\",\n  \"statusCode\": 404\n}"
 												}
 											]
 										},
@@ -699,7 +704,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"raw": "[\n  {\n    \"code\": \"A001\",\n    \"quantity\": 10\n  },\n  {\n    \"code\": \"B001\",\n    \"quantity\": 10\n  }\n]",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -721,7 +726,8 @@
 															],
 															"variable": [
 																{
-																	"key": "id"
+																	"key": "id",
+																	"value": "1"
 																}
 															]
 														}
@@ -736,7 +742,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"id\": \"<integer>\",\n  \"isAvailable\": \"<boolean>\",\n  \"name\": \"<string>\"\n}"
+													"body": "[\n    {\n        \"code\": \"A001\",\n        \"quantity\": 110\n    },\n    {\n        \"code\": \"B001\",\n        \"quantity\": 60\n    }\n]"
 												},
 												{
 													"name": "Bad Request",
@@ -894,7 +900,7 @@
 													"variable": [
 														{
 															"key": "id",
-															"value": "<integer>",
+															"value": "1",
 															"description": "(Required) Warehouse ID"
 														}
 													]
@@ -918,7 +924,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "[\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  },\n  {\n    \"code\": \"<string>\",\n    \"quantity\": \"<integer>\"\n  }\n]",
+															"raw": "[\n  {\n    \"code\": \"A001\",\n    \"quantity\": 50\n  },\n  {\n    \"code\": \"B001\",\n    \"quantity\": 20\n  }\n]",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -940,7 +946,8 @@
 															],
 															"variable": [
 																{
-																	"key": "id"
+																	"key": "id",
+																	"value": "1"
 																}
 															]
 														}
@@ -955,7 +962,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"ok\": \"<boolean>\"\n}"
+													"body": "{\n  \"ok\": true\n}"
 												},
 												{
 													"name": "Bad Request",
@@ -1127,7 +1134,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"raw": "{\n  \"name\": \"New warehouse\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -1157,7 +1164,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"id\": \"<integer>\",\n  \"isAvailable\": \"<boolean>\",\n  \"name\": \"<string>\"\n}"
+									"body": "{\n  \"id\": 0,\n  \"isAvailable\": true,\n  \"name\": \"New warehouse\"\n}"
 								},
 								{
 									"name": "Bad Request",
@@ -1175,7 +1182,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\"\n}",
+											"raw": "{\n  \"name\": 0\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -1205,7 +1212,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"details\": \"<string>\",\n  \"statusCode\": \"<integer>\"\n}"
+									"body": "{\n  \"details\": \"request body contains an invalid value\",\n  \"statusCode\": 400\n}"
 								}
 							]
 						}

@@ -216,7 +216,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1.AddProduct"
+                                "$ref": "#/definitions/v1.ProductQuantity"
                             }
                         }
                     }
@@ -225,7 +225,10 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/v1.Warehouse"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1.ProductQuantity"
+                            }
                         }
                     },
                     "400": {
@@ -275,7 +278,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/domain.Product"
+                                "$ref": "#/definitions/v1.ProductQuantity"
                             }
                         }
                     },
@@ -384,17 +387,6 @@ const docTemplate = `{
                 }
             }
         },
-        "v1.AddProduct": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "string"
-                },
-                "quantity": {
-                    "type": "integer"
-                }
-            }
-        },
         "v1.CreateWarehouse": {
             "type": "object",
             "properties": {
@@ -414,6 +406,17 @@ const docTemplate = `{
                 },
                 "size": {
                     "type": "string"
+                }
+            }
+        },
+        "v1.ProductQuantity": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
                 }
             }
         },

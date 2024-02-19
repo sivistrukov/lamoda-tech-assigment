@@ -149,7 +149,7 @@ func (uc *UseCases) AddProductToWarehouse(
 	}
 
 	updated := warehouse.Products()
-	result := make([]map[string]any, len(updated))
+	result := make([]map[string]any, 0, len(updated))
 	for _, p := range updated {
 		result = append(result, map[string]any{"code": p.Code, "quantity": p.Quantity})
 	}

@@ -209,7 +209,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/v1.AddProduct"
+                                "$ref": "#/definitions/v1.ProductQuantity"
                             }
                         }
                     }
@@ -218,7 +218,10 @@
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/v1.Warehouse"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/v1.ProductQuantity"
+                            }
                         }
                     },
                     "400": {
@@ -268,7 +271,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/domain.Product"
+                                "$ref": "#/definitions/v1.ProductQuantity"
                             }
                         }
                     },
@@ -377,17 +380,6 @@
                 }
             }
         },
-        "v1.AddProduct": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "string"
-                },
-                "quantity": {
-                    "type": "integer"
-                }
-            }
-        },
         "v1.CreateWarehouse": {
             "type": "object",
             "properties": {
@@ -407,6 +399,17 @@
                 },
                 "size": {
                     "type": "string"
+                }
+            }
+        },
+        "v1.ProductQuantity": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
                 }
             }
         },

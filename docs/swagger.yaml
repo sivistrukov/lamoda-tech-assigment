@@ -25,13 +25,6 @@ definitions:
       ok:
         type: boolean
     type: object
-  v1.AddProduct:
-    properties:
-      code:
-        type: string
-      quantity:
-        type: integer
-    type: object
   v1.CreateWarehouse:
     properties:
       name:
@@ -45,6 +38,13 @@ definitions:
         type: string
       size:
         type: string
+    type: object
+  v1.ProductQuantity:
+    properties:
+      code:
+        type: string
+      quantity:
+        type: integer
     type: object
   v1.ReservationRequest:
     properties:
@@ -198,7 +198,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/v1.AddProduct'
+            $ref: '#/definitions/v1.ProductQuantity'
           type: array
       produces:
       - application/json
@@ -206,7 +206,9 @@ paths:
         "201":
           description: Created
           schema:
-            $ref: '#/definitions/v1.Warehouse'
+            items:
+              $ref: '#/definitions/v1.ProductQuantity'
+            type: array
         "400":
           description: Bad Request
           schema:
@@ -239,7 +241,7 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/domain.Product'
+              $ref: '#/definitions/v1.ProductQuantity'
             type: array
         "404":
           description: Not Found
