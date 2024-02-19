@@ -2,11 +2,10 @@ module lamoda-tech-assigment
 
 go 1.22.0
 
-require github.com/gorilla/mux v1.8.1
-
 require (
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/golang-migrate/migrate/v4 v4.17.0
+	github.com/gorilla/mux v1.8.1
 	github.com/lib/pq v1.10.9
 	github.com/swaggo/http-swagger/v2 v2.0.2
 	github.com/swaggo/swag v1.8.1
