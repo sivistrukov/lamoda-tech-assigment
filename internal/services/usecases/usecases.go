@@ -132,6 +132,7 @@ func (uc *UseCases) AddProductToWarehouse(
 ) ([]map[string]any, error) {
 	warehouse, err := uc.uow.Warehouses.Get(warehouseID)
 	if err != nil {
+		_ = uc.uow.Rollback()
 		return make([]map[string]any, 0), err
 	}
 
@@ -139,6 +140,7 @@ func (uc *UseCases) AddProductToWarehouse(
 
 	err = uc.uow.Warehouses.Update(warehouse)
 	if err != nil {
+		_ = uc.uow.Rollback()
 		return make([]map[string]any, 0), err
 	}
 
